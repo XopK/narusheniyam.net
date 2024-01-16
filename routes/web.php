@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserController::class, 'index'])->name('index');
 
-Route::get('/signin', [UserController::class, 'signin'])->name('signin');
 Route::post('/signin', [UserController::class, 'signin_valid'])->name('signin_valid');
 Route::get('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/signup', [UserController::class, 'signup_valid'])->name('signup_valid');
