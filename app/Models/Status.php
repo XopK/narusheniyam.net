@@ -13,6 +13,8 @@ class Status extends Model
         'title_status',
     ];
 
+    public $timestamps = false;
+
     public function get_applications(){
         return $this->hasMany(Application::class);
     }
