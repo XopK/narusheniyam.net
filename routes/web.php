@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,5 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/profile/newApplication', [ProfileController::class, 'application'])->name('NewApplication');
 Route::post('/profile/createApplication', [ProfileController::class, 'create_application'])->name('createApplication');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');

@@ -10,7 +10,8 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('profile');
+        $application = Auth::user()->get_application()->get();
+        return view('profile', ['application' => $application]);
     }
 
     public function application(){
@@ -37,7 +38,7 @@ class ProfileController extends Controller
         ]);
 
         if($application){
-            return redirect()->back()->with('success', 'Заявление подано!');
+            return redirect()->back()->with('success', 'Заявление подана!');
         }else{
             return redirect()->back()->with('error', 'Ошибка подачи!');
         }

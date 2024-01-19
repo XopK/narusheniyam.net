@@ -49,6 +49,6 @@ class User extends Authenticatable
     ];
 
     public function get_application(){
-        return $this->hasMany(Application::class);
+        return $this->hasMany(Application::class, 'id_user');
     }
 }

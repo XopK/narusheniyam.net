@@ -15,7 +15,29 @@
 
 <body>
     <x-header></x-header>
-    
+    <div class="container">
+        <h1 class="mt-4">Мои заявления</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Номер авто</th>
+                    <th scope="col">Нарушение</th>
+                    <th scope="col">Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($application as $item)
+                    <tr>
+                        <th scope="row">{{ $item->id }}</th>
+                        <td>{{ $item->number_auto }}</td>
+                        <td>{{ $item->violation }}</td>
+                        <td>{{ $item->id_status }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

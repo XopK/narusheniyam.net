@@ -17,10 +17,10 @@ class Application extends Model
     ];
 
     public function get_status(){
-        return $this->hasOne(Status::class);
+        return $this->hasOne(Status::class, 'id_status');
     }
 
     public function get_user(){
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class, 'id_user');
     }
 }
