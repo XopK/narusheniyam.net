@@ -22,11 +22,18 @@ Route::post('/signin', [UserController::class, 'signin_valid'])->name('signin_va
 Route::get('/signup', [UserController::class, 'signup'])->name('signup');
 Route::post('/signup', [UserController::class, 'signup_valid'])->name('signup_valid');
 
-Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/profile/newApplication', [ProfileController::class, 'application'])->name('NewApplication');
-Route::post('/profile/createApplication', [ProfileController::class, 'create_application'])->name('createApplication');
+Route::middleware('checkrole:Пользователь')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/profile/newApplication', [ProfileController::class, 'application'])->name('NewApplication');
+    Route::post('/profile/createApplication', [ProfileController::class, 'create_application'])->name('createApplication');
+});
+
+Route::middleware('checkrole:Администратор')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+    Route::get('/admin/accept/{id}', [AdminController::class, 'accept'])->name('accept');
+    Route::get('/admin/denay/{id}', [AdminController::class, 'denay'])->name('denay');
+});

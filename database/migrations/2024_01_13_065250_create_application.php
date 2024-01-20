@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('number_auto');
             $table->string('violation', 500);
-            $table->foreignId('id_status')->references('id')->on('status');
+            $table->foreignId('id_status')->references('id')->on('statuses');
             $table->foreignId('id_user')->references('id')->on('users');
             $table->timestamps();
         });

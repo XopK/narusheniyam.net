@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        $application = Auth::user()->get_application()->get();
+        $application = Auth::user()->get_application()->with('get_status')->get();
         return view('profile', ['application' => $application]);
     }
 

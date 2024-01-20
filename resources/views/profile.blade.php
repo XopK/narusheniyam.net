@@ -27,14 +27,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($application as $item)
+                @forelse ($application as $item)
                     <tr>
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->number_auto }}</td>
                         <td>{{ $item->violation }}</td>
-                        <td>{{ $item->id_status }}</td>
+                        <td>{{ $item->get_status->title_status }}</td>
                     </tr>
-                @endforeach
+                @empty
+                @endforelse
             </tbody>
         </table>
     </div>

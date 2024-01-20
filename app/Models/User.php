@@ -23,7 +23,7 @@ class User extends Authenticatable
         'patronymic',
         'phone',
         'login',
-        'role',
+        'id_role',
         'email',
         'password',
     ];
@@ -50,5 +50,10 @@ class User extends Authenticatable
 
     public function get_application(){
         return $this->hasMany(Application::class, 'id_user');
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'id_role');
     }
 }

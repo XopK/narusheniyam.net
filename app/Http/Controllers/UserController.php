@@ -49,7 +49,7 @@ class UserController extends Controller
             'name' => $parts[1],
             'surname' => $parts[0],
             'patronymic' => $parts[2],
-            'role' => 'Пользователь',
+            'id_role' => 2,
             'phone' => $userData['phone'],
             'email' => $userData['email'],
         ]);
@@ -78,13 +78,18 @@ class UserController extends Controller
             'login' => $userData['login'],
             'password' => $userData['password'],
         ])) {
-            return redirect('profile')->with('success', 'Успешная авторизация!');
+            if (Auth::user()->id_role == 1) {
+                return redirect('admin');
+            } else {
+                return redirect('profile')->with('success', 'Успешная авторизация!');
+            }
         } else {
             return redirect()->back()->with('error', 'Ошибка авторизации');
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         Session::flush();
         Auth::logout();
         return redirect('/');
