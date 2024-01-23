@@ -28,39 +28,41 @@
             <li class="list-group-item"><a href="/admin?sort=desc"><img width="30px" src="/images/desc-sort.png"
                         alt="desc-sort.png"></a></li>
         </ul>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Номер авто</th>
-                    <th scope="col">Нарушение</th>
-                    <th scope="col">Заявитель</th>
-                    <th scope="col">Статус</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($application as $item)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">{{ $item->id }}</th>
-                        <td>{{ $item->number_auto }}</td>
-                        <td>{{ $item->violation }}</td>
-                        <td>{{ $item->get_user->surname }} {{ $item->get_user->name }}</td>
-                        <td>{{ $item->get_status->title_status }}</td>
-                        @if ($item->id_status == 1)
-                            <td><a href="/admin/accept/{{ $item->id }}"><span class="material-symbols-outlined">
-                                        done
-                                    </span></a></td>
-                            <td><a href="/admin/denay/{{ $item->id }}"><span class="material-symbols-outlined">
-                                        close
-                                    </span></a></td>
-                        @endif
-
+                        <th scope="col">#</th>
+                        <th scope="col">Номер авто</th>
+                        <th scope="col">Нарушение</th>
+                        <th scope="col">Заявитель</th>
+                        <th scope="col">Статус</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($application as $item)
+                        <tr>
+                            <th scope="row">{{ $item->id }}</th>
+                            <td>{{ $item->number_auto }}</td>
+                            <td>{{ $item->violation }}</td>
+                            <td>{{ $item->get_user->surname }} {{ $item->get_user->name }}</td>
+                            <td>{{ $item->get_status->title_status }}</td>
+                            @if ($item->id_status == 1)
+                                <td><a href="/admin/accept/{{ $item->id }}"><span class="material-symbols-outlined">
+                                            done
+                                        </span></a></td>
+                                <td><a href="/admin/denay/{{ $item->id }}"><span class="material-symbols-outlined">
+                                            close
+                                        </span></a></td>
+                            @endif
+
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
         {{ $application->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
 </body>
