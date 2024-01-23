@@ -38,6 +38,7 @@
                 @endforelse
             </tbody>
         </table>
+        {{ $application->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
 </body>
 

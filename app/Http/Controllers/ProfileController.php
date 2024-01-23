@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        $application = Auth::user()->get_application()->with('get_status')->get();
+        $application = Auth::user()->get_application()->with('get_status')->paginate(5);
         return view('profile', ['application' => $application]);
     }
 
@@ -20,10 +20,11 @@ class ProfileController extends Controller
 
     public function create_application(Request $request){
         $request->validate([
-            'num_auto' => 'required',
+            'num_auto' => 'required|regex:/[А-Яа-яЁё]\d{3}[А-Яа-яЁё]{2}\d{2,3}/u',
             'description' => 'required',
         ],[
             'num_auto.required' => 'Поле обязательно для заполнения!',
+            'num_auto.regex' => 'Введите действительный формат!',
             'description.required' => 'Поле обязательно для заполнения!',
         ]);
 

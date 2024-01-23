@@ -20,7 +20,7 @@
         <form action="{{ route('createApplication') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="example" class="form-label">Регистрационный номер автомобил</label>
+                <label for="example" class="form-label">Регистрационный номер автомобиля</label>
                 <input type="text" name="num_auto" class="form-control" id="example">
                 @error('num_auto')
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">

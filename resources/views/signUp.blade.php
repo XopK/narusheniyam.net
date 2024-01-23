@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <style>
         .form-signin {
             max-width: 400px;
@@ -76,7 +78,7 @@
                     @enderror
                 </div>
                 <div class="form-floating">
-                    <input type="text" name="phone" class="form-control" id="floatingInput"
+                    <input type="text" name="phone" class="form-control phone" id="floatingInput"
                         placeholder="Номер телефона">
                     <label for="floatingInput">Номер телефона</label>
                     @error('phone')
@@ -110,5 +112,8 @@
 
 
 </body>
+<script>
+    $(".phone").mask("+7(999)999-99-99");
+</script>
 
 </html>

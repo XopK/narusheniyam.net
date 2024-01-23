@@ -25,14 +25,16 @@ class UserController extends Controller
         $request->validate([
             'login' => 'required|unique:users',
             'password' => 'required|min:6',
-            'name' => 'required',
-            'phone' => 'required',
+            'name' => 'required|regex:/[А-Яа-яЁё]/u',
+            'phone' => 'required|regex:/\+7\([0-9][0-9][0-9]\)[0-9]{3}(\-)[0-9]{2}(\-)[0-9]{2}$/',
             'email' => 'required|email',
         ], [
             'login.required' => 'Заполните поле!',
             'password.required' => 'Заполните поле!',
             'name.required' => 'Заполните поле!',
+            'name.regex' => 'Только русские символы!',
             'phone.required' => 'Заполните поле!',
+            'phone.regex' => 'Введите требуемый формат!',
             'email.required' => 'Заполните поле!',
             'login.unique' => 'Данный логин занят!',
             'password' => 'Ваш пароль должен содержать минимум 6 символов!',

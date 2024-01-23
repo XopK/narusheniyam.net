@@ -23,7 +23,7 @@ class AdminController extends Controller
     protected function get_app($sort = 'asc')
     {
 
-        return Application::orderBy('created_at', $sort)->with('get_status', 'get_user')->get();
+        return Application::orderBy('created_at', $sort)->with('get_status', 'get_user')->paginate(10);
     }
 
     public function accept(Application $id)

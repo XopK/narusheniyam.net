@@ -19,7 +19,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mt-3">
             <h1>Панель админстратора</h1>
-                <a href="{{ route('logout') }}">Выйти</a>
+            <a href="{{ route('logout') }}">Выйти</a>
         </div>
 
         <ul class="list-group list-group-horizontal mt-3 mb-3">
@@ -46,7 +46,7 @@
                         <th scope="row">{{ $item->id }}</th>
                         <td>{{ $item->number_auto }}</td>
                         <td>{{ $item->violation }}</td>
-                        <td>{{ $item->get_user->surname }} {{ $item->get_user->surname }}</td>
+                        <td>{{ $item->get_user->surname }} {{ $item->get_user->name }}</td>
                         <td>{{ $item->get_status->title_status }}</td>
                         @if ($item->id_status == 1)
                             <td><a href="/admin/accept/{{ $item->id }}"><span class="material-symbols-outlined">
@@ -61,6 +61,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $application->withQueryString()->links('pagination::bootstrap-5') }}
     </div>
 </body>
 
